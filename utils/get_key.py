@@ -12,7 +12,7 @@ def get_key():
 
             root = tk.Tk()
             root.withdraw()  # Oculta a janela principal
-            key = simpledialog.askstring("Descriptografia", "Digite a chave para descriptografar os arquivos:")
+            key = simpledialog.askstring("No Cry Honney", "Insira a chave de descriptografia:")
             if key is None:
                 print("Nenhuma chave fornecida. A operação foi cancelada.")
                 sys.exit(1)
