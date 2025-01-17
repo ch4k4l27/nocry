@@ -1,6 +1,4 @@
 import subprocess
-import os
-import sys
 
 def create_executable():
     # Defina o caminho para o arquivo principal e os dados a serem incluídos
@@ -28,4 +26,3 @@ def create_executable():
 
 if __name__ == "__main__":
     create_executable()
-

