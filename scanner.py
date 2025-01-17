@@ -25,7 +25,7 @@ if __name__ == "__main__":
             "Criptografia concluída. Agora, forneça a chave para descriptografar os arquivos."
             )
 
-    file_name = "./instrucoes.txt" if os.name != "nt" else "./instrucoes.txt"
+    file_name = "instrucoes.txt"
 
     try:
         # Usando o modo 'x' para criar o arquivo (gera erro se o arquivo já existir)
