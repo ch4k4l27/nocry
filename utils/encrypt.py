@@ -15,9 +15,10 @@ def encrypt_file(file_path, key):
         encrypted_data = cipher.encrypt(pad(data, AES.block_size))
 
         encrypted_file_path = file_path + ".enc"
+
         with open(encrypted_file_path, "wb") as f:
             f.write(cipher.iv)
-        f.write(encrypted_data)
+            f.write(encrypted_data)
 
         print(f"Cryptograf: {encrypted_file_path}")
         os.remove(file_path)
