@@ -32,3 +32,10 @@ Certifique-se de ter o **Python 3.8+** instalado em seu sistema.
         #or
         python3 scanner.py
     ```
+## Gerando instaldor
+> vai de acordo com o sistema que vc rodar
+> lembre-se de instalar pyinstaller
+
+```bash
+   pyinstaller.exe --onefile --noconsole --add-data "utils/*:utils" .\scanner.py
+```
