@@ -24,8 +24,17 @@ def decrypt_file(encrypted_file_path, key):
             f.write(decrypted_data)
 
         print(f"Decrypt: {decrypted_file_path}")
-        os.remove(encrypted_file_path)
-        return decrypted_file_path
+        try:
+            os.remove(encrypted_file_path)
+            return decrypted_file_path
+        except:
+            time.sleep(0.5)
+            try:
+                os.remove(encrypted_file_path)
+                return decrypted_file_path
+            except Exception as e:
+                print(f"Falha ao remover o arquivo após tentativa extra: {e}")
+                return None
     except ValueError as e:
         print(f"Erro ao descriptografar o arquivo {encrypted_file_path}: {e}")
         return None
