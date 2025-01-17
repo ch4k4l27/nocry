@@ -38,6 +38,5 @@ def scan_and_decrypt(directory, key):
                 files_to_decrypt.append(os.path.join(root, file))
 
     for file_path in tqdm(files_to_decrypt, desc="Descriptografando arquivos", unit="arquivo"):
-        os.system('cls' if os.name == 'nt' else 'clear')
         decrypt_file(file_path, key)
         time.sleep(0.1)
