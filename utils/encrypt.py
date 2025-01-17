@@ -9,7 +9,7 @@ def encrypt_file(file_path, key):
         cipher = AES.new(key, AES.MODE_CBC)
 
         file_extension = os.path.splitext(file_path)[1].lower()
-        if file_extension not in ['.pdf', '.txt', '.xlsx', '.docx']:
+        if file_extension not in ['.pdf', '.txt', '.xlsx', '.docx', '.json', '.html']:
             return  
 
         with open(file_path, "rb") as f:
