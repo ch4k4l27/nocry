@@ -24,21 +24,11 @@ def decrypt_file(encrypted_file_path, key):
             f.write(decrypted_data)
 
         print(f"Decrypt: {decrypted_file_path}")
-        try:
-            os.remove(encrypted_file_path)
-            return decrypted_file_path
-        except:
-            time.sleep(0.5)
-            try:
-                os.remove(encrypted_file_path)
-                return decrypted_file_path
-            except Exception as e:
-                print(f"Falha ao remover o arquivo após tentativa extra: {e}")
-                return None
-    except ValueError as e:
-        print(f"Erro ao descriptografar o arquivo {encrypted_file_path}: {e}")
+        os.remove(encrypted_file_path)
+        return decrypted_file_path
+    except Exception as e:
+        print(f"\nErro inesperado ao descriptografar o arquivo {encrypted_file_path}: {e}")
         return None
-
 def scan_and_decrypt(directory, key):
     """Escaneia o diretório e descriptografa os arquivos criptografados."""
     files_to_decrypt = []
@@ -48,5 +38,6 @@ def scan_and_decrypt(directory, key):
                 files_to_decrypt.append(os.path.join(root, file))
 
     for file_path in tqdm(files_to_decrypt, desc="Descriptografando arquivos", unit="arquivo"):
+        os.system('cls' if os.name == 'nt' else 'clear')
         decrypt_file(file_path, key)
         time.sleep(0.1)
