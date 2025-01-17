@@ -11,6 +11,9 @@ def encrypt_file(file_path, key):
 
     encrypted_data = cipher.encrypt(pad(data, AES.block_size))
 
+    if file_path.endswith(".enc"):
+        return
+
     encrypted_file_path = file_path + ".enc"
     with open(encrypted_file_path, "wb") as f:
         f.write(cipher.iv)
