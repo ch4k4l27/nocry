@@ -1,7 +1,6 @@
 import os
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
-from tqdm import tqdm
 import time
 
 def decrypt_file(encrypted_file_path, key):
@@ -31,12 +30,8 @@ def decrypt_file(encrypted_file_path, key):
         return None
 def scan_and_decrypt(directory, key):
     """Escaneia o diretório e descriptografa os arquivos criptografados."""
-    files_to_decrypt = []
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith(".enc"):
-                files_to_decrypt.append(os.path.join(root, file))
-
-    for file_path in tqdm(files_to_decrypt, desc="Descriptografando arquivos", unit="arquivo"):
-        decrypt_file(file_path, key)
-        time.sleep(0.1)
+                file_path=os.path.join(root, file)
+                decrypt_file(file_path, key)

